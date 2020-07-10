@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Models.Models.Product>
+@{
+    ViewBag.Title = "Home page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="sortlinks">
+    @Html.ActionLink("Sort products by date", "GetProductByDate", "Home", new { }, new { @class = "btn btn-default" }) ||
+    @Html.ActionLink("Sort products by price", "GetProductByPrice", "Home", new { }, new { @class = "btn btn-default" }) ||
+    @Html.ActionLink("Sort products by title", "GetProductByTitle", "Home", new { }, new { @class = "btn btn-default" })
+</div>
+<br />
+<br />
+<h3 class="Message">
+    @if (HttpContext.Current.Request.Cookies["message"] != null)
+    {
+        @HttpContext.Current.Request.Cookies["message"].Value
+    }
+    @if (HttpContext.Current.Request.Cookies["payMessage"] != null)
+    {
+        @HttpContext.Current.Request.Cookies["payMessage"].Value
+    }
+</h3>
+
+<div>
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 text-center">
+            <div class="panel panel-warning panel-pricing">
+                <div class="panel-heading">
+                    <i class="fa fa-desktop"></i>
+                    <h3>@item.Title</h3>
+                </div>
+
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><i class="fa fa-check"></i>Date: @item.Date</li>
+                    <li class="list-group-item"><i class="fa fa-check"></i>UserName:@item.User.UserName </li>
+                    <li>
+                        @if (item.PictureOne != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.PictureOne);
+                            var imgSrc = String.Format("data:image;base64,{0}", base64);
+                            <img src="@imgSrc" width="200" height="250" />
+                        }
+                        else if (item.PictureTwo != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.PictureTwo);
+                            var imgSrc = String.Format("data:image;base64,{0}", base64);
+                            <img src="@imgSrc" width="200" height="250" />
+                        }
+                        else if (item.PictureThree != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.PictureThree);
+                            var imgSrc = String.Format("data:image;base64,{0}", base64);
+                            <img src="@imgSrc" width="200" height="250" />
+                        }
+                    </li>
+
+                </ul>
+                <div class="panel-footer">
+                    @Html.ActionLink("Read More", "GetAllDetails", "Product", new { id = item.ID }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Add to cart", "AddToCart", "Product", new { id = item.ID }, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+

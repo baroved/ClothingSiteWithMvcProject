@@ -1,0 +1,213 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+body {
+    background: #F1F3FA;
+}
+
+/* Profile container */
+.profile {
+    margin: 20px 0;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+    text-transform: uppercase;
+    color: #5b9bd1;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .profile-userbuttons .btn {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 15px;
+        margin-right: 5px;
+    }
+
+        .profile-userbuttons .btn:last-child {
+            margin-right: 0px;
+        }
+
+.profile-usermenu {
+    margin-top: 30px;
+}
+
+    .profile-usermenu ul li {
+        border-bottom: 1px solid #f0f4f7;
+    }
+
+        .profile-usermenu ul li:last-child {
+            border-bottom: none;
+        }
+
+        .profile-usermenu ul li a {
+            color: #93a3b5;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+            .profile-usermenu ul li a i {
+                margin-right: 8px;
+                font-size: 14px;
+            }
+
+            .profile-usermenu ul li a:hover {
+                background-color: #fafcfd;
+                color: #5b9bd1;
+            }
+
+        .profile-usermenu ul li.active {
+            border-bottom: none;
+        }
+
+            .profile-usermenu ul li.active a {
+                color: #5b9bd1;
+                background-color: #f6f9fb;
+                border-left: 2px solid #5b9bd1;
+                margin-left: -2px;
+            }
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
+
+.title{
+   color:white;
+}
+.siteMap{
+    background-color:black;
+    color:darkgray;
+    font-size:20px;
+}
+.p{
+    position:absolute;
+    margin-left:20%;
+}
+
+
+
+.panel-pricing {
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+}
+
+    .panel-pricing:hover {
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .panel-pricing .panel-heading {
+        padding: 20px 10px;
+    }
+
+        .panel-pricing .panel-heading .fa {
+            margin-top: 10px;
+            font-size: 58px;
+        }
+
+    .panel-pricing .list-group-item {
+        color: #777777;
+        border-bottom: 1px solid rgba(250, 250, 250, 0.5);
+    }
+
+        .panel-pricing .list-group-item:last-child {
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+
+        .panel-pricing .list-group-item:first-child {
+            border-top-right-radius: 0px;
+            border-top-left-radius: 0px;
+        }
+
+    .panel-pricing .panel-body {
+        background-color: #f0f0f0;
+        font-size: 40px;
+        color: #777777;
+        padding: 20px;
+        margin: 0px;
+    }
+#Payment{
+    color:red;
+}
+.areaTitle{
+    text-align:center;
+    
+    color:white;
+}
+
+.temp {
+    top:25%;
+    position: fixed;
+    height: 100%;
+    left: 1%;
+    width:50%;
+    
+}
+.sortlinks {
+text-align:center;
+
+}
+.left-side {
+    margin: 0 0 0 25%;
+}
+.Message{
+    color:red;
+}
+
+
+

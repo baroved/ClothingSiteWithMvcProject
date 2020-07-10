@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Models.Models.Product>
+
+@{
+    ViewBag.Title = "Your cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <h2>Products In Cart</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PictureOne)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @if (item.PictureOne != null)
+                    {
+                        var base64 = Convert.ToBase64String(item.PictureOne);
+                        var imgSrc = String.Format("data:image;base64,{0}", base64);
+                        <img src="@imgSrc" width="120" height="130" />
+                    }
+                    else if (item.PictureTwo != null)
+                    {
+                        var base64 = Convert.ToBase64String(item.PictureTwo);
+                        var imgSrc = String.Format("data:image;base64,{0}", base64);
+                        <img src="@imgSrc" width="120" height="130" />
+                    }
+                    else if (item.PictureThree != null)
+                    {
+                        var base64 = Convert.ToBase64String(item.PictureThree);
+                        var imgSrc = String.Format("data:image;base64,{0}", base64);
+                        <img src="@imgSrc" width="120" height="130" />
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Remove", "Delete", "Product", new { id = item.ID }, new { @class = "btn btn-danger" })
+                </td>
+                <td>
+                    @Html.ActionLink("Read More", "GetAllDetails", "Product", new { id = item.ID }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div>
+        @if (Context.User.Identity.IsAuthenticated)
+        {
+            <div id="Payment">Total For Member:  @ViewBag.SumMemberr $</div>
+        }
+        @if (!Context.User.Identity.IsAuthenticated)
+        {
+            <div>Total For Member:  @ViewBag.SumMember $</div>
+            <div id="Payment">Total:  @ViewBag.Sum $</div>
+        }
+    </div>
+    <div>
+        @Html.ActionLink("Pay", "PayProducts", "Product", new { }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Back to List", "GetProductAviable", "Home", new { }, new { @class = "btn btn-info" })
+    </div>
+</div>

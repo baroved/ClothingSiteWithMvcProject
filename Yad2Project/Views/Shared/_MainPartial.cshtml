@@ -1,0 +1,125 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+
+
+@{
+    var currentController = ViewContext.RouteData.Values["controller"] as string ?? "Home";
+    var currentAction = ViewContext.RouteData.Values["action"] as string ?? "Index";
+    var currentPage = (currentController + "-" + currentAction).ToLower();
+}
+<div>
+    <div class="col-md-4 col-sm-2 col-xs-1">
+        <div class="profile-sidebar">
+
+            <div class="profile-usermenu">
+
+                <ul class="nav">
+                    <li>
+                        <a id="Homebtn" class="btns" href="@Url.Action("GetProductAviable","Home")">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a id="Accountbtn" class="btns" href="@Url.Action("Edit","User")">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Account Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a id="Cartbtn" class="btns" href="@Url.Action("GetProductInCart","Product")">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            My cart
+                        </a>
+                    </li>
+                    <li>
+                        <a id="Aboutbtn" class="btns" href="@Url.Action("About","Product")">
+                            <i class="glyphicon glyphicon-flag"></i>
+                            About us
+                        </a>
+                    </li>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a id="Addproductbtn" class="btns" href="@Url.Action("AddProduct","Product")">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                Add Product
+                            </a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+            @{
+                string strPathAndQuery = Request.Url.ToString();
+                if (strPathAndQuery == "http://localhost:54449/Product/GetProductInCart")
+                {
+                    <script>
+                        var btns = document.getElementsByClassName("btns");
+                        for (var i = 0; i < btns.length; i++) {
+                            if (btns[i].id == "Cartbtn")
+                                btns[i].setAttribute("style", "pointer-events:none");
+                            else
+                                btns[i].setAttribute("style", "pointer-events:auto");
+                        }
+                    </script>
+                }
+                if (strPathAndQuery == "http://localhost:54449/")
+                {
+                    <script >
+                    var btns = document.getElementsByClassName("btns");
+                    for (var i = 0; i < btns.length; i++)
+                    {
+                    if (btns[i].id == "Homebtn")
+                    btns[i].setAttribute("style", "pointer-events:none");
+                    else
+                    btns[i].setAttribute("style", "pointer-events:auto");
+                    }
+                    </script >
+                }
+                if (strPathAndQuery == "http://localhost:54449/User/Edit" || strPathAndQuery == "http://localhost:54449/User/CreateUser")
+                {
+                    <script >
+                    var btns = document.getElementsByClassName("btns");
+                    for (var i = 0; i < btns.length; i++)
+                    {
+                    if (btns[i].id == "Accountbtn")
+                    btns[i].setAttribute("style", "pointer-events:none");
+                    else
+                    btns[i].setAttribute("style", "pointer-events:auto");
+                    }
+                    </script >
+                }
+                if (strPathAndQuery == "http://localhost:54449/Product/About")
+                {
+                    <script>
+                        var btns = document.getElementsByClassName("btns");
+                        for (var i = 0; i < btns.length; i++) {
+                            if (btns[i].id == "Aboutbtn")
+                                btns[i].setAttribute("style", "pointer-events:none");
+                            else
+                                btns[i].setAttribute("style", "pointer-events:auto");
+                        }
+                    </script>
+                }
+                if (strPathAndQuery == "http://localhost:54449/Product/AddProduct")
+                {
+                    <script>
+                        var btns = document.getElementsByClassName("btns");
+                        for (var i = 0; i < btns.length; i++) {
+                            if (btns[i].id == "Addproductbtn")
+                                btns[i].setAttribute("style", "pointer-events:none");
+                            else
+                                btns[i].setAttribute("style", "pointer-events:auto");
+                        }
+                    </script>
+                }
+
+            }
+        </div>
+    </div>
+</div>
+
